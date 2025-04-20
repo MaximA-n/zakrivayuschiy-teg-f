@@ -101,13 +101,18 @@
   padding-block-end: 25px;
 }
 
-.button {
+.button {  
   position: relative;
   border: 2px solid var(--main-color);
-  padding: 7px 35px;
+  padding: 7px;
   color: var(--button-text-color);
   background-color: inherit;
   cursor: pointer;
+}
+
+.card__like-button {
+  max-inline-size: 130px;
+  inline-size: 100%;
 }
 
 .button__text {
