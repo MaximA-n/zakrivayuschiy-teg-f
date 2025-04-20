@@ -86,15 +86,13 @@
 
 .like-icon.is-liked {
   .sparks {
-    animation-name: sparks;
     animation: sparks 0.3s 0.3s ease-in;
-    transform-origin: 50% 50%;
+    transform-origin: center;
   }
 }
 
 .like-icon.is-liked {
   .heart {
-    animation-name: heart;
     animation: heart 0.3s 0.1s ease-in;
     transform-origin: center;
   }
