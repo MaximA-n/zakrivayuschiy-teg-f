@@ -4,8 +4,118 @@
 ✦ like-icon — для svg-иконки анимированного сердца
 ✦ card__like-button — для кнопки Like рядом с иконкой
 ✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
+
+.card__like-button:focus {
+  outline: none;
+}
+
+.card__like-button:focus-visible {
+  box-shadow: 3px 3px 5px var(--main-color);
+}
+
+.button:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--main-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+}
+
+.button:hover:before {
+  transform: scaleX(1);
+}
+
+.card__icon-button {
+  display: flex;
+  border: none;
+  background-color: inherit;
+  align-self: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  outline: 2px solid var(--main-color);
+  outline-offset: -2px;
+}
+
+.like-icon .sparks {
+  opacity: 0;
+}
+
+.like-icon {
+  .core,
+  .main-body {
+    fill: transparent;
+    transition: fill 0.3s linear 0.05s;
+  }
+}
+
+.like-icon:hover {
+  .core,
+  .main-body {
+    fill: var(--contour-color);
+  }
+}
+
+.like-icon:active {
+  .core,
+  .main-body {
+    fill: var(--animation-color);
+  }
+}
+
+.like-icon.is-liked {
+  .contour,
+  .main-body,
+  .core {
+    transition: fill 0.3s linear 0.05s;
+    fill: var(--animation-color);
+  }
+}
+
+.like-icon.is-liked {
+  .sparks {
+    animation-name: sparks;
+    animation: 0.3s 0.1s ease-in;
+    transform-origin: 50% 50%;
+  }
+}
+
+.like-icon.is-liked {
+  .heart {
+    animation-name: heart;
+    animation: 0.3s 0.3s ease-in;
+    transform-origin: center;
+  }
+}
+
+@keyframes sparks {
+  from {
+    opacity: 0%;
+  }
+
+  to {
+    opacity: 100%;
+  }
+}
+
+@keyframes heart {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.25);
+  }
+}
