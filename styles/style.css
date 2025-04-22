@@ -120,6 +120,8 @@
   color: var(--button-text-color, #fff);
   background-color: var(--bg-color, #fff);
   cursor: pointer;
+  box-shadow: none;
+  transition: box-shadow 0.3s linear;
 }
 
 .card__like-button {
@@ -143,6 +145,8 @@
 }
 
 .cards-menu {
+  flex-direction: column;
+  gap: 30px;
   color: var(--button-text-color, #fff);
   border: 2px solid var(--main-color, #000);
   padding: 30px 42px;
@@ -152,8 +156,6 @@
 
 .cards-menu[open] {
   display: flex;
-  flex-direction: column;
-  gap: 30px;
 }
 
 .cards-menu::backdrop {
