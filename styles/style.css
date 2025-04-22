@@ -12,7 +12,7 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--main-font);
+  font-family: var(--main-font), sans-serif;
   font-variation-settings: "wght" 400;
   background-attachment: fixed;
   background-size: cover;
@@ -26,16 +26,17 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), sans-serif;
   padding: clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem) 0
     clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem);
   border: 2px solid var(--main-color);
-  margin: 102px auto;
+  margin: 100px auto;
   background-color: var(--bg-color);
 }
 
 .header__logo {
   font-size: var(--logo-font-size);
+  text-transform: uppercase;
 }
 
 .header__description {
@@ -57,29 +58,31 @@
 }
 
 .card__title {
-  border-bottom: 2px solid var(--main-color);
   font-variation-settings: "wght" 700;
   font-size: 18px;
   padding-inline: 10px;
+  padding-block: 4.5px;
 }
 
 .card__image-container {
   position: relative;
+  border-block: 2px solid var(--main-color);
 }
 
 .card__image {
   display: block;
   inline-size: 100%;
+  max-inline-size: 371px;
   object-position: center;
   object-fit: cover;
 }
 
 .label {
   position: absolute;
-  inset-inline-end: 25px;
-  inset-block-start: 25px;
+  inset-inline-end: 11px;
+  inset-block-start: 23px;
   mix-blend-mode: hard-light;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), sans-serif;
   font-size: 14px;
   line-height: 100%;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
@@ -95,7 +98,7 @@
 
 .card__reaction {
   display: flex;
-  gap: 12px;
+  gap: 6px;
   justify-content: flex-end;
   padding-inline-end: 25px;
   padding-block-end: 25px;
@@ -105,8 +108,11 @@
   position: relative;
   border: 2px solid var(--main-color);
   padding: 7px;
+  font-family: var(--accent-font), sans-serif;
+  font-size: 14px;
+  line-height: 90%;
   color: var(--button-text-color);
-  background-color: inherit;
+  background-color: var(--bg-color);
   cursor: pointer;
 }
 
@@ -116,20 +122,18 @@
 }
 
 .button__text {
-  font-family: var(--accent-font);
-  font-size: 14px;
-  line-height: 90%;
-  mix-blend-mode: difference;
+  mix-blend-mode: difference; 
+}
+
+.transform {
+  text-transform: uppercase;
 }
 
 .button-save {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid var(--main-color);
-  padding: 14px 18px;
-  color: var(--button-text-color);
-  background-color: var(--bg-color);
+  padding: 15px 18px;
 }
 
 .cards-menu[open] {
@@ -144,7 +148,7 @@
 }
 
 .cards-menu[open]::backdrop {
-  backdrop-filter: brightness(25%);
+  background-color: rgb(0 0 0 / 0.75);
 }
 
 .page:has(.cards-menu[open]) {
@@ -164,12 +168,13 @@
 }
 
 .card__description {
-  padding: 25px;
-  border-top: 2px solid var(--main-color);
-}
-
-.card__description p:first-child {
-  margin-block-end: 27px;
+  display: grid;
+  gap: 27px;
+  padding-block: 25px;
+  padding-inline-start: 25px;
+  padding-inline-end: 26px;  
+  font-size: 18px;
+  line-height: 21px;
 }
 
 .card-save {
@@ -194,10 +199,13 @@
 }
 
 @media (width >= 700px) {
+  .card-save {
+    margin-block-start: 2px;
+  }
+
   .button-save {
     flex-direction: row;
     gap: 8px;
-    padding: 13px 18px;
   }
 
   .icon {
@@ -212,40 +220,56 @@
   }
 }
 
+@media (width >= 376px) {
+  .card__description {
+    padding: 25px;
+  }
+
+  .card__image {
+    inline-size: 100%;
+    max-inline-size: 696px;
+  }
+
+  .label {
+    inset-inline-end: 25px;
+    inset-block-start: 25px;
+  }
+}
+
 @media (width <= 375px) {
   .label {
     font-size: clamp(0.625rem, -0.8295rem + 7.2727vw, 0.875rem);
   }
 }
 
-.brightness {
+.filter-brightness {
   filter: brightness(60%);
 }
 
-.blur {
+.filter-blur {
   filter: blur(0.2rem);
 }
 
-.grayscale {
+.filter-grayscale {
   filter: grayscale(0.8);
 }
 
-.sepia {
+.filter-sepia {
   filter: sepia(80%);
 }
 
-.invert {
+.filter-invert {
   filter: invert(1);
 }
 
-.saturate {
+.filter-saturate {
   filter: saturate(160%);
 }
 
-.contrast {
+.filter-contrast {
   filter: contrast(130%);
 }
 
-.mix {
+.filter-mix {
   filter: brightness(60%) grayscale(0.8) brightness(70%);
 }

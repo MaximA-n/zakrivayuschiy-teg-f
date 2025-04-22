@@ -9,12 +9,17 @@
 
 */
 
-.card__like-button:focus {
+.button {
+  box-shadow: none;
+  transition: box-shadow 0.3s linear;
+}
+
+.button:focus {
   outline: none;
 }
 
-.card__like-button:focus-visible {
-  box-shadow: 3px 3px 5px var(--main-color);
+.button:focus-visible {
+  box-shadow: 2px 2px var(--main-color);
 }
 
 .button:before {
@@ -38,6 +43,9 @@
   align-self: center;
   padding: 0;
   cursor: pointer;
+  outline-offset: -2px;
+  outline: 2px solid transparent;
+  transition: outline 0.3s linear;
 }
 
 .card__icon-button:focus {
@@ -53,52 +61,70 @@
   opacity: 0;
 }
 
-.like-icon {
-  .core,
-  .main-body {
-    fill: transparent;
-    transition: fill 0.3s linear 0.05s;
-  }
+.core {
+  fill: transparent;
+  transition: fill 0.3s linear 0.03s;
 }
 
-.like-icon:hover {
-  .core,
-  .main-body {
-    fill: var(--contour-color);
-  }
+.main-body {
+  fill: transparent;
+  transition: fill 0.3s linear;
 }
 
-.like-icon:active {
-  .core,
-  .main-body {
-    fill: var(--animation-color);
-  }
+.contour {
+  transition: fill 0.3s linear;
 }
 
-.like-icon.is-liked {
-  .contour,
-  .main-body,
-  .core {
-    transition: fill 0.3s linear 0.05s;
-    fill: var(--animation-color);
-  }
+.like-icon:hover .core {
+  fill: var(--contour-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--contour-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon:active .core {
+  fill: var(--animation-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:active .main-body {
+  fill: var(--animation-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon.is-liked .core{
+  transition: fill 0.3s linear;
+  fill: var(--animation-color);
+}
+
+.like-icon.is-liked .main-body{
+  transition: fill 0.3s linear 0.05s;
+  fill: var(--animation-color);
+}
+
+.like-icon.is-liked .contour{
+  transition: fill 0.3s linear 0.06s;
+  fill: var(--animation-color);
 }
 
 .like-icon.is-liked {
   .sparks {
-    animation: sparks 0.3s 0.3s ease-in;
+    animation: fadeIn 0.3s ease-in 0.3s;
     transform-origin: center;
   }
 }
 
 .like-icon.is-liked {
   .heart {
-    animation: heart 0.3s 0.1s ease-in;
+    animation: increase 0.3s ease-in 0.1s;
     transform-origin: center;
   }
 }
 
-@keyframes sparks {
+@keyframes fadeIn {
   from {
     opacity: 0%;
   }
@@ -108,7 +134,7 @@
   }
 }
 
-@keyframes heart {
+@keyframes increase {
   from {
     transform: scale(1);
   }
